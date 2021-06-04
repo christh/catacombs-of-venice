@@ -116,16 +116,16 @@ namespace IR
                 LaunchToPoint(direction);
             }
 
-            if (Input.GetMouseButton(1))
-            {
-                agent.isStopped = false;
-                Vector3 target = Input.mousePosition;
-                target.z = -Camera.main.transform.position.z;
-                target = Camera.main.ScreenToWorldPoint(target);
-                agent.destination = target;
-            }
+            //if (Input.GetMouseButton(1))
+            //{
+            //    agent.isStopped = false;
+            //    Vector3 target = Input.mousePosition;
+            //    target.z = -Camera.main.transform.position.z;
+            //    target = Camera.main.ScreenToWorldPoint(target);
+            //    agent.destination = target;
+            //}
 
-            if (!agent.isStopped) return; // no double dipping
+            //if (!agent.isStopped) return; 
 
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
