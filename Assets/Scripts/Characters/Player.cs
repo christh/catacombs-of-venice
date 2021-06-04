@@ -43,6 +43,22 @@ namespace IR
         {
             ProcessInputs();
             PlayerMovement();
+
+            CheatModeInputs();
+
+            if (Vector3.Distance(agent.destination, transform.position) < 1)
+            {
+                agent.isStopped = true;
+            }
+        }
+
+        private void CheatModeInputs()
+        {
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                var exit = FindObjectOfType<LevelExit>();
+                exit.EndLevel();
+            }
         }
 
         void LaunchToPoint(Vector3 target)
@@ -99,6 +115,17 @@ namespace IR
                 Vector3 direction = Input.mousePosition;
                 LaunchToPoint(direction);
             }
+
+            if (Input.GetMouseButton(1))
+            {
+                agent.isStopped = false;
+                Vector3 target = Input.mousePosition;
+                target.z = -Camera.main.transform.position.z;
+                target = Camera.main.ScreenToWorldPoint(target);
+                agent.destination = target;
+            }
+
+            if (!agent.isStopped) return; // no double dipping
 
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");

@@ -19,10 +19,15 @@ namespace IR
         {
             if (collision.CompareTag("Player"))
             {
-                if (isGrandExit)
-                {
-                    UIManager.Instance.WinState();
-                }
+                EndLevel();
+            }
+        }
+
+        public void EndLevel()
+        {
+            if (isGrandExit)
+            {
+                UIManager.Instance.WinState();
             }
 
             var gold = FindObjectsOfType<Pickup>();
