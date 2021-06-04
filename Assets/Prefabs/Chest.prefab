@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldSprayer: {fileID: 6723873377753690866, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
-  goldItemCount: 4
-  quality: 0.25
+  goldItemCount: 2
+  quality: 0.5
 --- !u!1 &3986764439679345981
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldSprayer: {fileID: 6723873377753690866, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
-  goldItemCount: 10
+  goldItemCount: 4
   quality: 0.25
 --- !u!1 &9065366340767408062
 GameObject:
@@ -400,5 +400,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldSprayer: {fileID: 6723873377753690866, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
-  goldItemCount: 2
-  quality: 0.25
+  goldItemCount: 3
+  quality: 0.33

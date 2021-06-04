@@ -14,6 +14,8 @@ namespace IR
         private TMP_Text EnemiesKilledCount;
         [SerializeField]
         private TMP_Text PlayerHealth;
+        [SerializeField]
+        private TMP_Text EndGameDucats;
 
         private void Start()
         {
@@ -26,6 +28,7 @@ namespace IR
             GoldCount.text = $"Thine Ducats: {GameManager.Instance.GetGold()}";
             EnemiesKilledCount.text = $"Thou hast slain enemies: {GameManager.Instance.GetEnemiesKilled()}";
             PlayerHealth.text = $"Thine Health: {GameManager.Instance.GetPlayerHealth()}";
+            EndGameDucats.text = $"Thou didst procure {GameManager.Instance.GetGold()} ducats.";
         }
 
         private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)

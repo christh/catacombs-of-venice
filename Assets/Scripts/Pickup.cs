@@ -1,6 +1,7 @@
 ﻿using IR.Factories;
 using System;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace IR
 {
@@ -33,7 +34,7 @@ namespace IR
                     gameObject.layer = activePickupLayer;
                 }
             }
-            
+
         }
         public event Action<Pickup> OnPickup;
 
@@ -60,7 +61,9 @@ namespace IR
                 {
                     audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                     audioSource.PlayOneShot(CollectSound);
+                    GetComponentInChildren<SpriteRenderer>().enabled = false;
                     Destroy(gameObject, CollectSound.length);
+                    GetComponent<Light2D>().enabled = false;
                 }
                 else
                 {

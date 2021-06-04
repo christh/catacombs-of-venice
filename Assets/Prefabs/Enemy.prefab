@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1129696302806841722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408581669245898078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bb77fe34a81914580f0b9c53b727a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryCoolDown: 1.5
+  isActive: 1
+  inRangeOfPlayer: 0
+  inAccuracy: 0.05
+  spinRate: -500
+  BulletPrefab: {fileID: 5722907415715412469, guid: fee7151aeef1e6b4db71ab33edd468eb, type: 3}
+  Muzzle: {fileID: 3408581669245898078}
 --- !u!60 &4537278161205518516
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -44,41 +63,6 @@ PolygonCollider2D:
       - {x: -0.119511485, y: -0.47747174}
       - {x: 0.001308918, y: -0.14639023}
       - {x: 0.11998272, y: -0.46900904}
---- !u!114 &7280899763805281733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5740416347720856126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744c45edb5054ac49b387349b05ad68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  idle: 1
-  TriggerableTags:
-  - Projectile
---- !u!114 &1129696302806841722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408581669245898078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bb77fe34a81914580f0b9c53b727a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryCoolDown: 1.5
-  isActive: 1
-  inRangeOfPlayer: 0
-  inAccuracy: 0.05
-  spinRate: -500
-  BulletPrefab: {fileID: 5722907415715412469, guid: fee7151aeef1e6b4db71ab33edd468eb, type: 3}
-  Muzzle: {fileID: 3408581669245898078}
 --- !u!1001 &5472498791148164748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,6 +94,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 323358642201942565, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
+      propertyPath: DeathAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 525cf064c9d3bb542b99db30de8c9a68, type: 3}
     - target: {fileID: 323358642201942565, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: deadAnimationCount
       value: 3
@@ -182,6 +170,10 @@ PrefabInstance:
       propertyPath: BulletPrefab
       value: 
       objectReference: {fileID: 5722907415715412469, guid: fee7151aeef1e6b4db71ab33edd468eb, type: 3}
+    - target: {fileID: 5803386354807873512, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44b1b6028e98d8743b6055a3dfb2532c, type: 3}
     - target: {fileID: 7122723598189369605, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: m_Mass
       value: 1

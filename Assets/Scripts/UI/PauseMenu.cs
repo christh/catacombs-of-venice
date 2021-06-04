@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
         private void Start()
         {
             Resume.onClick.AddListener(HandleResumeClicked);
-            Restart.onClick.AddListener(HandleRestartClicked);
+            //Restart.onClick.AddListener(HandleRestartClicked);
             Quit.onClick.AddListener(HandleQuitClicked);
         }
 
@@ -23,10 +23,10 @@ public class PauseMenu : MonoBehaviour
         {
             GameManager.Instance.TogglePause();
         }
-        private void HandleRestartClicked()
-        {
-            GameManager.Instance.RestartGame();
-        }
+        //private void HandleRestartClicked()
+        //{
+        //    GameManager.Instance.RestartGame();
+        //}
         private void HandleQuitClicked()
         {
             GameManager.Instance.QuitGame();

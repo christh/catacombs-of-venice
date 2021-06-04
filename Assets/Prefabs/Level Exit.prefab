@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2678722575611669019}
   - component: {fileID: 2678722575611669018}
   - component: {fileID: 2678722575611669017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,4 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c3625acc4b1b94096a5fd4fcb8d0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrandExit: 0
   destination: Level 2

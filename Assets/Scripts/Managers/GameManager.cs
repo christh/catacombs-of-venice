@@ -12,7 +12,8 @@ namespace IR
         {
             PRE_GAME,
             RUNNING,
-            PAUSED
+            PAUSED,
+            ENDGAME
         }
 
         public GameObject[] SystemPrefabs;
@@ -30,10 +31,11 @@ namespace IR
 
         [SerializeField] string firstLevel = "Level 1";
 
-        internal void RestartGame()
-        {
-            UpdateState(GameState.PRE_GAME);
-        }
+        //internal void RestartGame()
+        //{
+        //    SceneManager.UnloadSceneAsync(currentLevel);
+        //    SceneManager.LoadScene(firstLevel);
+        //}
 
         internal void AddGold(int value)
         {
@@ -175,6 +177,9 @@ namespace IR
                     Time.timeScale = 1.0f;
                     break;
                 case GameState.PAUSED:
+                    Time.timeScale = 0.0f;
+                    break;
+                case GameState.ENDGAME:
                     Time.timeScale = 0.0f;
                     break;
                 default:

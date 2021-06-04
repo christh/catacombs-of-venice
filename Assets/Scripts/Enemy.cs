@@ -12,7 +12,8 @@ namespace IR
         [SerializeField] float speed = 3;
         [SerializeField] bool idle = true;
         [SerializeField] string[] TriggerableTags;
-
+        [SerializeField] AudioClip hitSound;
+        private AudioSource audioSource;
         private Rigidbody2D rb;
         private NavMeshAgent agent;
 
@@ -25,6 +26,7 @@ namespace IR
             agent = GetComponent<NavMeshAgent>();
             rb = GetComponent<Rigidbody2D>();
             Health = GetComponent<Health>();
+            audioSource = GetComponent<AudioSource>();
 
             agent.updateRotation = false;
             agent.updateUpAxis = false;
@@ -91,7 +93,8 @@ namespace IR
             }
             else
             {
-                // We'd spawn some damage components here or something
+                audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                audioSource.PlayOneShot(hitSound);
             }
         }
 

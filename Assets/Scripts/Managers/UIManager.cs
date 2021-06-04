@@ -11,6 +11,7 @@ namespace IR
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private GameUI gameUI;
         [SerializeField] private Camera dummyCamera;
+        [SerializeField] private GameObject winScreen;
 
         private bool sceneTransitionInProgress = false;
 
@@ -67,6 +68,14 @@ namespace IR
         {
             sceneTransitionInProgress = !active;
             dummyCamera.gameObject.SetActive(active);
+        }
+
+        public void WinState()
+        {
+            gameUI.gameObject.SetActive(false);
+            winScreen.SetActive(true);
+            Time.timeScale = 0.0f;
+            MusicManager.Instance.StopPlayingCurrentTrack();
         }
 
     }

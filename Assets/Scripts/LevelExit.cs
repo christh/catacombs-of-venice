@@ -5,9 +5,9 @@ using UnityEngine;
 namespace IR
 {
 
-
     public class LevelExit : MonoBehaviour
     {
+        [SerializeField] bool isGrandExit = false;
         [SerializeField] string destination;
         // Start is called before the first frame update
         void Start()
@@ -19,10 +19,19 @@ namespace IR
         {
             if (collision.CompareTag("Player"))
             {
-                GameManager.Instance?.GoToFloor(destination);
+                if (isGrandExit)
+                {
+                    UIManager.Instance.WinState();
+                }
             }
 
+            var gold = FindObjectsOfType<Pickup>();
+            foreach (var item in gold)
+            {
+                Destroy(item.gameObject);
+            }
 
+            GameManager.Instance?.GoToFloor(destination);
         }
     }
 }

@@ -45,5 +45,10 @@ namespace IR
                 currentClip = s;
             }
         }
+
+        public void StopPlayingCurrentTrack()
+        {
+            currentClip.source.Stop();
+        }
     }
 }

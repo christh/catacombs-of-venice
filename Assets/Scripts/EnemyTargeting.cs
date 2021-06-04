@@ -50,12 +50,19 @@ namespace IR {
         // Update is called once per frame
         public void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision.CompareTag("Player"))
+            {
+
+            }
             inRangeOfPlayer = true;
         }
 
         public void OnTriggerExit2D(Collider2D collision)
         {
-            inRangeOfPlayer = false;
+            if (collision.CompareTag("Player"))
+            {
+                inRangeOfPlayer = false;
+            }
         }
     }
 }

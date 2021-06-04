@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 180
   lifetime: 2
-  LaunchSound: {fileID: 0}
+  LaunchSound: {fileID: 8300000, guid: 74ae30a42fc119f47a1c3185573c1378, type: 3}
   power: 10
 --- !u!82 &288068988823661640
 AudioSource:

@@ -5,8 +5,6 @@ namespace IR.Factories
 {
     public class PickupFactory : MonoBehaviour
     {
-        // TODO: add to global settings
-        private static Transform group = GameObject.Find("/Pickup Container").transform;
 
         public static void SpawnGold(GameObject goldSprayer, Vector2 position, int count, float quality)
         {
@@ -16,11 +14,11 @@ namespace IR.Factories
                 return;
             }
 
-            var msObj = Instantiate(goldSprayer, position, Quaternion.identity, group);
+            var msObj = Instantiate(goldSprayer, position, Quaternion.identity, GameObject.Find("Pickup Container").transform);
             var ms = msObj.GetComponent<GoldSprayer>();
             ms.NumberOfCoins = count;
             ms.Quality = quality;
-            ms.transform.SetParent(group);
+            ms.transform.SetParent(GameObject.Find("Pickup Container").transform);
         }
 
         public static void PlaySpriteAnimation(GameObject animation, Vector2 position)
