@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace IR
+namespace CV
 {
     public class MusicManager : Singleton<MusicManager>
     {
@@ -19,6 +19,7 @@ namespace IR
                 sound.source.clip = sound.clip;
                 sound.source.volume = sound.volume;
                 sound.source.pitch = sound.pitch;
+                sound.loop = true;
             }
 
             Play(currentTrack);
@@ -41,6 +42,7 @@ namespace IR
             if (currentClip.trackName != "" && s.source.clip.name != currentClip.trackName)
             {
                 currentClip.source.Stop();
+                s.source.loop = true;
                 s.source.Play();
                 currentClip = s;
             }

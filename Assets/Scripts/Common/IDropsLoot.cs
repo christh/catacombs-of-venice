@@ -1,4 +1,4 @@
-﻿namespace IR
+﻿namespace CV
 {
 
     internal interface IDropsLoot

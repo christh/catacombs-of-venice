@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace IR
+namespace CV
 {
     public enum FadeTypes
     {

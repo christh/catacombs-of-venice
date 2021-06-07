@@ -1,9 +1,9 @@
-﻿using IR.Factories;
+﻿using CV.Factories;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IR
+namespace CV
 {
     public class DropGold : MonoBehaviour, IDropsLoot
     {

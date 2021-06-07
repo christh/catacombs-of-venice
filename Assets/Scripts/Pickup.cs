@@ -1,9 +1,9 @@
-﻿using IR.Factories;
+﻿using CV.Factories;
 using System;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-namespace IR
+namespace CV
 {
     public class Pickup : MonoBehaviour
     {

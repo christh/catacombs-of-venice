@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IR
+namespace CV
 {
 
     public interface IDamageable

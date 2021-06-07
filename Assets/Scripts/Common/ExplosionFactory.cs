@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-namespace IR.Factories
+namespace CV.Factories
 {
     public class ExplosionFactory : MonoBehaviour
     {

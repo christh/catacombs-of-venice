@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace IR {
+namespace CV {
     public class EnemyTargeting : MonoBehaviour
     {
         [SerializeField] private float primaryCoolDown = 1.5f;

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf26a80df28493949b1be99843a491ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 180
+  speed: 210
   lifetime: 2
   LaunchSound: {fileID: 8300000, guid: 74ae30a42fc119f47a1c3185573c1378, type: 3}
   power: 10

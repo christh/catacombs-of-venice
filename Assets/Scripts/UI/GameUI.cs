@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace IR
+namespace CV
 {
 
     public class GameUI : MonoBehaviour
@@ -28,7 +28,9 @@ namespace IR
             GoldCount.text = $"Thine Ducats: {GameManager.Instance.GetGold()}";
             EnemiesKilledCount.text = $"Thou hast slain enemies: {GameManager.Instance.GetEnemiesKilled()}";
             PlayerHealth.text = $"Thine Health: {GameManager.Instance.GetPlayerHealth()}";
-            EndGameDucats.text = $"Thou didst procure {GameManager.Instance.GetGold()} ducats.";
+
+            var goldCount = GameManager.Instance.GetGold();
+            EndGameDucats.text = $"Thou didst procure {(goldCount == 0 ? "nary a ducat" : goldCount + " ducats")}.";
         }
 
         private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)

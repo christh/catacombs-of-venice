@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IR {
+namespace CV {
     public class LevelEntrance : MonoBehaviour
     {
         void Start()

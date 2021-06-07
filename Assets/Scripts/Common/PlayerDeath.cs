@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using IR.Factories;
+using CV.Factories;
 
-namespace IR
+namespace CV
 {
     public class PlayerDeath : MonoBehaviour, IDestructible
     {

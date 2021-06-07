@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace IR
+namespace CV
 {
     public class AssetLookup : MonoBehaviour
     {

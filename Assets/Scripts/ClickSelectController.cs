@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace IR
+namespace CV
 {
     public class ClickSelectController : MonoBehaviour
     {

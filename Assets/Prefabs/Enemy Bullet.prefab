@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf26a80df28493949b1be99843a491ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  lifetime: 4
+  speed: 12
+  lifetime: 2
   LaunchSound: {fileID: 8300000, guid: daa29d56eeffa2343964726180f3cb70, type: 3}
   power: 5
 --- !u!82 &2936664412034722272

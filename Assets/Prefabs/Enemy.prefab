@@ -97,7 +97,7 @@ PrefabInstance:
     - target: {fileID: 323358642201942565, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: DeathAudio
       value: 
-      objectReference: {fileID: 8300000, guid: 525cf064c9d3bb542b99db30de8c9a68, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 323358642201942565, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: deadAnimationCount
       value: 3
@@ -171,6 +171,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5722907415715412469, guid: fee7151aeef1e6b4db71ab33edd468eb, type: 3}
     - target: {fileID: 5803386354807873512, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803386354807873512, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: hitSound
       value: 
       objectReference: {fileID: 8300000, guid: 44b1b6028e98d8743b6055a3dfb2532c, type: 3}
@@ -181,6 +185,10 @@ PrefabInstance:
     - target: {fileID: 7122723598189369605, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: m_LinearDrag
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162733911524797759, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
+      propertyPath: m_Radius
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7463538451013368811, guid: c6cd154e5c332c541a3330e79fddd15b, type: 3}
       propertyPath: m_Layer

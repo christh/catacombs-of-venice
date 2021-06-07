@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace IR
+namespace CV
 {
     public class Player : MonoBehaviour, IDamageable
     {

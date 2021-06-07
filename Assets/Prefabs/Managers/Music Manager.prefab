@@ -48,12 +48,25 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f176e4968dda9dc4baabc619427e3e0a, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - trackName: Level 1
     clip: {fileID: 8300000, guid: 999ed83d932241d4ba5aff37d80e4681, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 0
+    loop: 1
+    source: {fileID: 0}
+  - trackName: Level empty
+    clip: {fileID: 8300000, guid: 416ece2c90a02d248890d4fc3c534f93, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
   currentTrack: Start
+  currentClip:
+    trackName: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

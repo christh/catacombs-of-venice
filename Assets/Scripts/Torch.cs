@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-namespace IR
+namespace CV
 {
     public class Torch : MonoBehaviour, IInteractable
     {

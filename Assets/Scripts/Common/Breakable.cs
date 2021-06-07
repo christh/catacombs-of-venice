@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using IR.Factories;
+using CV.Factories;
 
-namespace IR
+namespace CV
 {
     public class Breakable : MonoBehaviour, IDestructible
     {

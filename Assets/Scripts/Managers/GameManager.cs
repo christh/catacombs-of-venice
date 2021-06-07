@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System;
 
-namespace IR
+namespace CV
 {
     public class GameManager : Singleton<GameManager>
     {

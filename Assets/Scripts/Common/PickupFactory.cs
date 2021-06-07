@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace IR.Factories
+namespace CV.Factories
 {
     public class PickupFactory : MonoBehaviour
     {

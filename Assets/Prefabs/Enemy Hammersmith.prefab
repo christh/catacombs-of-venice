@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5732788065544162473, guid: 7401e4d6d37fc2041ac0d1afa94b4c60, type: 3}
+      propertyPath: DeathAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: b9f9c745c9aace84193cd1dca60ca6f9, type: 3}
     - target: {fileID: 5740416347720856126, guid: 7401e4d6d37fc2041ac0d1afa94b4c60, type: 3}
       propertyPath: m_Name
       value: Enemy Hammersmith
