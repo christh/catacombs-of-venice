@@ -47,7 +47,7 @@ namespace CV
                 }
             }
 
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.touches.Length > 0) 
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.touches.Length > 0 || Input.GetButton("Fire1"))
                 && !sceneTransitionInProgress)
             {
                 sceneTransitionInProgress = true;

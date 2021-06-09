@@ -30,6 +30,9 @@ namespace CV
         public int gold { get; set; }
 
         public event Action<Health> OnHealthChanged;
+
+        private bool usingController = false;
+
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
@@ -59,20 +62,6 @@ namespace CV
                 var exit = FindObjectOfType<LevelExit>();
                 exit.EndLevel();
             }
-        }
-
-        void LaunchToPoint(Vector3 target)
-        {
-            var angleFudge = UnityEngine.Random.Range(-inAccuracy, inAccuracy);
-            target.z = -Camera.main.transform.position.z;
-            target = Camera.main.ScreenToWorldPoint(target) - Turret.transform.position;
-
-            var bulletRotation = Quaternion.LookRotation(Vector3.forward * angleFudge, target);
-
-            GameObject projectileObject = Instantiate(BulletPrefab, (Vector2)Turret.transform.position, bulletRotation);
-
-            var projectile = projectileObject.GetComponent<ForceProjectile>();
-            projectile.Launch();
         }
 
         public void Damage(float damageValue, string tag)
@@ -107,6 +96,19 @@ namespace CV
         {
             if (!isActive) { return; }
 
+            var lookHorizontal = Input.GetAxis("Right Stick Horizontal");
+            var lookVertical = Input.GetAxis("Right Stick Vertical");
+
+            if (Mathf.Abs(lookHorizontal) > 0.5 || Mathf.Abs(lookVertical) > 0.5)
+            {
+                usingController = true;
+            }
+            else
+            {
+                usingController = false;
+            }
+
+
             primaryTimer += Time.deltaTime;
 
             if ((Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0)) && primaryTimer >= primaryCoolDown)
@@ -115,15 +117,11 @@ namespace CV
                 Vector3 direction = Input.mousePosition;
                 LaunchToPoint(direction);
             }
-
-            //if (Input.GetMouseButton(1))
-            //{
-            //    agent.isStopped = false;
-            //    Vector3 target = Input.mousePosition;
-            //    target.z = -Camera.main.transform.position.z;
-            //    target = Camera.main.ScreenToWorldPoint(target);
-            //    agent.destination = target;
-            //}
+            else if(usingController && primaryTimer >= primaryCoolDown)
+            {
+                primaryTimer = 0;
+                LaunchToAngle(new Vector3(lookHorizontal,lookVertical));
+            }
 
             //if (!agent.isStopped) return; 
 
@@ -137,6 +135,39 @@ namespace CV
             }
 
             moveDirection = new Vector2(moveX, moveY);
+        }
+
+        void LaunchToPoint(Vector3 target)
+        {
+            var angleFudge = UnityEngine.Random.Range(-inAccuracy, inAccuracy);
+            target.z = -Camera.main.transform.position.z;
+            target = Camera.main.ScreenToWorldPoint(target) - Turret.transform.position; 
+
+            var bulletRotation = Quaternion.LookRotation(Vector3.forward * angleFudge, target);
+
+            GameObject projectileObject = Instantiate(BulletPrefab, (Vector2)Turret.transform.position, bulletRotation);
+
+            var projectile = projectileObject.GetComponent<ForceProjectile>();
+            projectile.Launch();
+        }
+
+        private void LaunchToAngle(Vector3 target)
+        {
+            //var angleFudge = UnityEngine.Random.Range(-inAccuracy, inAccuracy);
+            target.z = -Camera.main.transform.position.z;
+            //target = Turret.transform.position + target;
+
+            Vector2 lookDir = new Vector2(target.x, -target.y);
+
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+
+            var bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            GameObject projectileObject = Instantiate(BulletPrefab, (Vector2)Turret.transform.position, bulletRotation);
+
+            var projectile = projectileObject.GetComponent<ForceProjectile>();
+            projectile.Launch();
+            
         }
 
         private void PlayerMovement()
