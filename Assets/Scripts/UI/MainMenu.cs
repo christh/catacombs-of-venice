@@ -17,7 +17,7 @@ namespace CV
 
         public Events.EventFadeComplete OnMainMenuFadeComplete;
 
-        private void Start()
+        private void Awake()
         {
             GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
         }

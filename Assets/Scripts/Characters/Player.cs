@@ -42,6 +42,11 @@ namespace CV
             GameManager.Instance?.UpdateHealth(Health.GetCurrentHealth());
         }
 
+        void Resurrection()
+        {
+            GameManager.Instance?.UpdateHealth(Health.GetCurrentHealth());
+        }
+
         void FixedUpdate()
         {
             ProcessInputs();

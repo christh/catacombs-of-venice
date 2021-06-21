@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1980455203136604516, guid: 7401e4d6d37fc2041ac0d1afa94b4c60, type: 3}
+      propertyPath: maintainedDistance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2924274512666065843, guid: 7401e4d6d37fc2041ac0d1afa94b4c60, type: 3}
       propertyPath: m_Radius
       value: 7

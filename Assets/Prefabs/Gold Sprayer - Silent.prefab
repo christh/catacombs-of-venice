@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold Sprayer - Silent
       objectReference: {fileID: 0}
+    - target: {fileID: 6723873377753690868, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
+      propertyPath: m_DistanceScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723873377753690868, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
+      propertyPath: m_ForceMagnitude
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723873377753690868, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
+      propertyPath: m_ForceVariation
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 6723873377753690869, guid: 05bad5c6476c22a4786d6e5b4c3d9c76, type: 3}
       propertyPath: m_RootOrder
       value: 0

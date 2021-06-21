@@ -10,6 +10,7 @@ namespace CV
         [SerializeField] int value = 1;
         [SerializeField] GameObject Animation;
         [SerializeField] AudioClip CollectSound;
+        [SerializeField] string[] triggerableTags = { "Player" };
 
         private Rigidbody2D rb;
         private AudioSource audioSource;
@@ -40,34 +41,39 @@ namespace CV
 
         void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            foreach (var tag in triggerableTags)
             {
-                //HandlePickup(other);
-                if (GameManager.IsInitialised)
+                if (other.gameObject.CompareTag(tag))
                 {
-                    GameManager.Instance.AddGold(value);
-                }
+                    //HandlePickup(other);
+                    if (GameManager.IsInitialised)
+                    {
+                        GameManager.Instance.AddGold(value);
+                    }
 
-                if (Animation)
-                {
-                    PickupFactory.PlaySpriteAnimation(Animation, transform.position);
-                }
+                    if (Animation)
+                    {
+                        PickupFactory.PlaySpriteAnimation(Animation, transform.position);
+                    }
 
-                if (rb == null) return;
+                    if (rb == null) return;
 
-                rb.simulated = false;
+                    rb.simulated = false;
 
-                if (CollectSound)
-                {
-                    audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
-                    audioSource.PlayOneShot(CollectSound);
-                    GetComponentInChildren<SpriteRenderer>().enabled = false;
-                    Destroy(gameObject, CollectSound.length);
-                    GetComponent<Light2D>().enabled = false;
-                }
-                else
-                {
-                    Destroy(gameObject);
+                    if (CollectSound)
+                    {
+                        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                        audioSource.PlayOneShot(CollectSound);
+                        GetComponentInChildren<SpriteRenderer>().enabled = false;
+                        Destroy(gameObject, CollectSound.length);
+                        GetComponent<Light2D>().enabled = false;
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+
+                    return;
                 }
             }
         }

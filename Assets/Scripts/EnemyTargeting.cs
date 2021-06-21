@@ -13,9 +13,12 @@ namespace CV {
 
         private float primaryTimer = 0;
         private Player player;
+        private Enemy enemy;
+
         // Start is called before the first frame update
         void Start()
         {
+            enemy = GetComponentInParent<Enemy>();
             player = FindObjectOfType<Player>();
         }
 
@@ -25,12 +28,13 @@ namespace CV {
 
             primaryTimer += Time.deltaTime;
 
-            if (inRangeOfPlayer && primaryTimer >= primaryCoolDown * Random.Range(1, 1.5f))
+            if (inRangeOfPlayer && primaryTimer >= primaryCoolDown * Random.Range(1, 1.75f))
             {
                 primaryTimer = 0;
                 ShootAtPlayer();
             }
         }
+
 
         void ShootAtPlayer()
         {
@@ -43,6 +47,10 @@ namespace CV {
             GameObject projectileObject = Instantiate(BulletPrefab, (Vector2)Muzzle.transform.position, bulletRotation);
 
             var projectile = projectileObject.GetComponent<ForceProjectile>();
+            if (enemy.IsAggroed() && enemy.IsMoving())
+            {
+                projectile.speed *= 2f;
+            }
             projectile.AddSpin(spinRate);
             projectile.Launch();
         }

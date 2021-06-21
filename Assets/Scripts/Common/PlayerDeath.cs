@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using CV.Factories;
 
@@ -40,14 +39,28 @@ namespace CV
 
         IEnumerator Resurrect()
         {
+            ResetEnemyAggro();
+
             yield return new WaitForSeconds(2f);
             transform.position = FindObjectOfType<LevelEntrance>().transform.position;
             transform.rotation = Quaternion.identity;
             triggered = false;
             gameObject.layer = playerLayer;
             GetComponent<PointEffector2D>().enabled = true;
-            GetComponent<Health>().HealToMax();
+            var health = GetComponent<Health>();
+            health.HealToMax();
+            GameManager.Instance?.UpdateHealth(health.GetCurrentHealth());
             animator.SetBool(currentDeadState, false);
+        }
+
+        private void ResetEnemyAggro()
+        {
+            var enemies = FindObjectsOfType<Enemy>();
+
+            foreach (var enemy in enemies)
+            {
+                enemy.ResetAggro();
+            }
         }
     }
 }

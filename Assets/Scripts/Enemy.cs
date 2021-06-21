@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,9 +12,12 @@ namespace CV
         [SerializeField] bool idle = true;
         [SerializeField] string[] TriggerableTags;
         [SerializeField] AudioClip hitSound;
+        [SerializeField] float maintainedDistance = 2f;
         private AudioSource audioSource;
         private Rigidbody2D rb;
         private NavMeshAgent agent;
+        private GameObject player;
+
 
         public Health Health { get; set; }
         public event Action<Health> OnHealthChanged;
@@ -27,10 +29,24 @@ namespace CV
             rb = GetComponent<Rigidbody2D>();
             Health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
-
+            player = GameObject.FindGameObjectWithTag("Player");
             agent.updateRotation = false;
             agent.updateUpAxis = false;
             agent.speed = speed;
+        }
+
+        public bool IsAggroed()
+        {
+            return !idle;
+        }
+
+        public bool IsMoving()
+        {
+            return !agent.isStopped;
+        }
+        public void ResetAggro()
+        {
+            idle = true;
         }
 
         // Update is called once per frame
@@ -50,14 +66,23 @@ namespace CV
 
         private void ChasePlayer()
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
-
             if (player == null)
             {
                 idle = true;
                 return;
             }
+
             agent.destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
+            if (agent.remainingDistance > 0 && agent.remainingDistance < UnityEngine.Random.Range(maintainedDistance * 0.8f, maintainedDistance * 1.2f)) // Keep a distance from the player
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+            }
+
         }
 
         private void RandomMove()

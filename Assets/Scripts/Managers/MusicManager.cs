@@ -30,7 +30,7 @@ namespace CV
             Sound s = Array.Find(sounds, sound => sound.trackName == name);
             if (s == null)
             {
-                Debug.LogWarning($"Sound: {s.trackName} not found!");
+                Debug.LogWarning($"Sound: {name} not found!");
                 return;
             }
 

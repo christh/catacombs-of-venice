@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System;
+using System.Collections;
 
 namespace CV
 {
@@ -24,12 +25,13 @@ namespace CV
         private List<GameObject> instantiatedSystemPrefabs;
         private string currentLevel;
 
-        private List<AsyncOperation> loadOperations;
         private int goldCount = 0;
         private int enemiesKilledCount = 0;
         private int playerHealth = 0;
 
         [SerializeField] string firstLevel = "Level 1";
+
+        bool levelLoadInProgress = false;
 
         //internal void RestartGame()
         //{
@@ -72,7 +74,6 @@ namespace CV
             DontDestroyOnLoad(gameObject);
 
             instantiatedSystemPrefabs = new List<GameObject>();
-            loadOperations = new List<AsyncOperation>();
             currentLevel = string.Empty;
 
             InstantiateSystemPrefabs();
@@ -91,6 +92,13 @@ namespace CV
         }
         public void GoToFloor(string level)
         {
+            if (levelLoadInProgress)
+            {
+                Debug.LogWarning($"Couldn't load {level} - level load already in progress.");
+                return;
+            }
+            levelLoadInProgress = true;
+
             UnloadLevel(currentLevel);
             LoadLevel(level);
         }
@@ -118,49 +126,57 @@ namespace CV
 
         public void LoadLevel(string level)
         {
-            var operation = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
-
-            if (operation == null)
-            {
-                Debug.LogError($"[GameManager] unable to load {level}");
-                return;
-            }
-            operation.completed += OnLoadOperationComplete;
-            loadOperations.Add(operation);
-            currentLevel = level;
-            MusicManager.Instance.Play(level);
+            StartCoroutine(StartLoadLevel(level));
         }
 
-        private void OnLoadOperationComplete(AsyncOperation ao)
+        IEnumerator StartLoadLevel(string level)
         {
-            if (loadOperations.Contains(ao))
-            {
-                loadOperations.Remove(ao);
+            var ao = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
 
-                if (loadOperations.Count == 0)
-                {
-                    UpdateState(GameState.RUNNING);
-                }
+            ao.allowSceneActivation = false;
+            while (ao.progress < 0.9f)
+            {
+                yield return null;
             }
-            Debug.Log("Load complete.");
+            ao.allowSceneActivation = true;
+
+            while (!ao.isDone)
+            {
+                yield return null;
+            }
+
+            //if (ao == null)
+            //{
+            //    Debug.LogError($"[GameManager] unable to load {level}");
+            //}
+            //else
+            {
+                UpdateState(GameState.RUNNING);
+                currentLevel = level;
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentLevel));
+                levelLoadInProgress = false;
+                MusicManager.Instance.Play(level);
+                Debug.Log("Load complete.");
+            }
         }
 
         public void UnloadLevel(string level)
         {
-            var operation = SceneManager.UnloadSceneAsync(level);
-
-            if (operation == null)
-            {
-                Debug.LogError($"[GameManager] unable to load {level}");
-                return;
-            }
-
-            operation.completed += OnUnloadOperationComplete;
+            StartCoroutine(StartUnloadLevel(level));
         }
 
-        private void OnUnloadOperationComplete(AsyncOperation ao)
+        IEnumerator StartUnloadLevel(string level)
         {
-            Debug.Log("Unload complete.");
+            var operation = SceneManager.UnloadSceneAsync(level);
+            yield return operation;
+            if (operation == null)
+            {
+                Debug.LogError($"[GameManager] unable to unload {level}");
+            }
+            else
+            {
+                Debug.Log("Unload complete.");
+            }
         }
 
         void UpdateState(GameState state)
